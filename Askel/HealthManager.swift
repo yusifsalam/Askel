@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-class HealthManager: ObservableObject {
+@Observable class HealthManager {
     
     let store = HKHealthStore()
     
@@ -37,7 +37,7 @@ class HealthManager: ObservableObject {
  
         let sampleQuery = HKSampleQuery(sampleType: workouts, predicate: predicates, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { _, result, error in
             guard let samples = result as? [HKWorkout], error == nil else {
-                print("failed to fetch, error: \(error?.localizedDescription)")
+                print("failed to fetch, error: \(String(describing: error?.localizedDescription))")
                 return
             }
             for sample in samples {

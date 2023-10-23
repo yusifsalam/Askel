@@ -9,11 +9,12 @@ import SwiftUI
 
 @main
 struct AskelApp: App {
-    @StateObject var manager = HealthManager()
+    @State var manager = HealthManager()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(manager)
+                .environment(manager)
         }
     }
 }

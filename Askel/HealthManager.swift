@@ -10,9 +10,11 @@ import HealthKit
 
 @Observable class HealthManager {
     let store = HKHealthStore()
+    var monthlySteps: [Step] = []
 
     
     var runningSteps: Int = -1
+    
     
     init() {
         if HKHealthStore.isHealthDataAvailable() {
@@ -54,10 +56,24 @@ import HealthKit
             }
             for sample in samples {
                 guard let runningSteps = sample.statistics(for: HKQuantityType(.stepCount))?.sumQuantity() else { return }
-                self.runningSteps = Int(runningSteps.doubleValue(for: HKUnit.count()))
-                print("running steps: \(runningSteps) on \(sample.startDate.formatted(date: .long, time: .shortened))")
+                let dayAsNumber = Calendar.current.component(.day, from: sample.startDate)
+                if var step = self.monthlySteps.first(where: { $0.day == dayAsNumber }) {
+                    step.count += Int(runningSteps.doubleValue(for: HKUnit.count()))
+                } else {
+                    self.monthlySteps.append(Step(type: "running", day: dayAsNumber, count: Int(runningSteps.doubleValue(for: HKUnit.count()))))
+                }
+                self.runningSteps += Int(runningSteps.doubleValue(for: HKUnit.count()))
             }
+            print(self.monthlySteps)
         }
         store.execute(sampleQuery)
     }
+}
+
+struct Step: Identifiable {
+    var id = UUID()
+    var type: String
+    var day: Int
+    var count: Int
+    
 }

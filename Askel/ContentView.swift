@@ -11,17 +11,33 @@ struct ContentView: View {
     @Environment(HealthManager.self) private var manager
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-        .onAppear {
-            manager.fetchRunningSteps()
+        NavigationStack {
+            VStack(spacing: 20) {
+                if manager.runningSteps == -1 {
+                    Image(systemName: "exclamationmark.lock.fill")
+                        .font(.largeTitle)
+                    VStack {
+                        Text("No HealthKit access!")
+                            .font(.headline)
+                        
+                        Text("Please allow Askel to read your steps and workouts")
+                            .font(.subheadline)
+                    }
+                    
+                    
+                } else {
+                    Text("Running steps: \(manager.runningSteps)")
+                }
+            }
+            .padding()
+            .onAppear {
+                manager.fetchRunningSteps()
+            }
+            .navigationTitle("Askel")
         }
     }
+    
+    
 }
 
 #Preview {

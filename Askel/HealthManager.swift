@@ -9,10 +9,21 @@ import Foundation
 import HealthKit
 
 @Observable class HealthManager {
-    
     let store = HKHealthStore()
+
+    
+    var runningSteps: Int = -1
     
     init() {
+        if HKHealthStore.isHealthDataAvailable() {
+            requestAccess()
+        } else {
+            fatalError("health data not available")
+        }
+        
+    }
+    
+    func requestAccess() {
         let steps = HKQuantityType(.stepCount)
         let workouts = HKObjectType.workoutType()
         let healthTypes: Set = [steps, workouts]
@@ -20,6 +31,7 @@ import HealthKit
         Task {
             do {
                 try await store.requestAuthorization(toShare: [], read: healthTypes)
+                runningSteps = 0
             } catch {
                 print("error fetching data", error)
             }
@@ -42,6 +54,7 @@ import HealthKit
             }
             for sample in samples {
                 guard let runningSteps = sample.statistics(for: HKQuantityType(.stepCount))?.sumQuantity() else { return }
+                self.runningSteps = Int(runningSteps.doubleValue(for: HKUnit.count()))
                 print("running steps: \(runningSteps) on \(sample.startDate.formatted(date: .long, time: .shortened))")
             }
         }

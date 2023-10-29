@@ -11,7 +11,12 @@ import Foundation
 struct Step: Identifiable {
     var id = UUID()
     var type: String
-    var day: Int
+    var date: Date
     var count: Int
     
+    var day: Int {
+        Calendar.current.component(.day, from: date)
+    }
+    
 }
+

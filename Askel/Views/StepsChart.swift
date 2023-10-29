@@ -29,9 +29,5 @@ struct StepsChart: View {
 }
 
 #Preview {
-    StepsChart(data: [
-        Step(type: "running", day: 1, count: 2500),
-        Step(type: "running", day: 5, count: 15000),
-        Step(type: "running", day: 21, count: 7153)
-    ])
+    StepsChart(data: [])
 }

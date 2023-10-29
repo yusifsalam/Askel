@@ -12,6 +12,8 @@
 		860037482AC994710005C296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 860037472AC994710005C296 /* Assets.xcassets */; };
 		8600374B2AC994710005C296 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8600374A2AC994710005C296 /* Preview Assets.xcassets */; };
 		860037532AC9A8F70005C296 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860037522AC9A8F70005C296 /* HealthManager.swift */; };
+		8673A18A2AEE3F8A00403A99 /* StepsChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8673A1892AEE3F8A00403A99 /* StepsChart.swift */; };
+		8673A18D2AEE450F00403A99 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8673A18C2AEE450F00403A99 /* Step.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		8600374A2AC994710005C296 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		860037512AC994DC0005C296 /* Askel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Askel.entitlements; sourceTree = "<group>"; };
 		860037522AC9A8F70005C296 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		8673A1892AEE3F8A00403A99 /* StepsChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsChart.swift; sourceTree = "<group>"; };
+		8673A18C2AEE450F00403A99 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 		860037422AC994700005C296 /* Askel */ = {
 			isa = PBXGroup;
 			children = (
+				8673A18B2AEE44FE00403A99 /* Model */,
+				8673A1882AEE3F7700403A99 /* Views */,
 				860037512AC994DC0005C296 /* Askel.entitlements */,
 				860037432AC994700005C296 /* AskelApp.swift */,
 				860037522AC9A8F70005C296 /* HealthManager.swift */,
@@ -70,6 +76,22 @@
 				8600374A2AC994710005C296 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8673A1882AEE3F7700403A99 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8673A1892AEE3F8A00403A99 /* StepsChart.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8673A18B2AEE44FE00403A99 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8673A18C2AEE450F00403A99 /* Step.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,7 +164,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8673A18A2AEE3F8A00403A99 /* StepsChart.swift in Sources */,
 				860037462AC994700005C296 /* ContentView.swift in Sources */,
+				8673A18D2AEE450F00403A99 /* Step.swift in Sources */,
 				860037532AC9A8F70005C296 /* HealthManager.swift in Sources */,
 				860037442AC994700005C296 /* AskelApp.swift in Sources */,
 			);

@@ -60,7 +60,7 @@ import HealthKit
                 if var step = self.monthlySteps.first(where: { $0.day == dayAsNumber }) {
                     step.count += Int(runningSteps.doubleValue(for: HKUnit.count()))
                 } else {
-                    self.monthlySteps.append(Step(type: "running", day: dayAsNumber, count: Int(runningSteps.doubleValue(for: HKUnit.count()))))
+                    self.monthlySteps.append(Step(type: "running", date: sample.startDate, count: Int(runningSteps.doubleValue(for: HKUnit.count()))))
                 }
                 self.runningSteps += Int(runningSteps.doubleValue(for: HKUnit.count()))
             }

@@ -70,10 +70,4 @@ import HealthKit
     }
 }
 
-struct Step: Identifiable {
-    var id = UUID()
-    var type: String
-    var day: Int
-    var count: Int
-    
-}
+

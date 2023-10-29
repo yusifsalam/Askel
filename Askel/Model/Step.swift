@@ -20,3 +20,15 @@ struct Step: Identifiable {
     
 }
 
+let calendar = Calendar.current
+let today = Date()
+let month = calendar.dateComponents([.year, .month], from: today)
+
+extension Step {
+    static var sampleData: [Step] = [
+        Step(type: "running", date: calendar.date(from: DateComponents(year: month.year, month: month.month, day: 1)) ?? today, count: 2500),
+        Step(type: "running", date: calendar.date(from: DateComponents(year: month.year, month: month.month, day: 5)) ?? today, count: 15000),
+        Step(type: "running", date: calendar.date(from: DateComponents(year: month.year, month: month.month, day: 15)) ?? today, count: 7153)
+        
+    ]
+}

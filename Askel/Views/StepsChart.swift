@@ -29,5 +29,5 @@ struct StepsChart: View {
 }
 
 #Preview {
-    StepsChart(data: [])
+    StepsChart(data: Step.sampleData)
 }

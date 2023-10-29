@@ -28,12 +28,7 @@ struct ContentView: View {
                     
                 } else {
                     Text("Running steps: \(manager.runningSteps)")
-                    Chart {
-                        ForEach(manager.monthlySteps) { step in
-                            BarMark(x: .value("Day", step.day), y: .value("", step.count))
-                        }
-                    }
-                    .chartXScale(domain: [1,31])
+                    StepsChart(data: manager.monthlySteps)
                 }
             }
             .padding()
